@@ -30,8 +30,8 @@
     <div id="messages"></div>
     <input id="input" type="text" placeholder="Type a message...">
     <script>
-        const conn = new WebSocket('ws://localhost:8080');
-        // const conn = new WebSocket('wss://edd5-42-118-101-199.ngrok-free.app');
+        // const conn = new WebSocket('ws://localhost:8080');
+        const conn = new WebSocket('wss://truongchat.netlify.app');
         const messages = document.getElementById('messages');
         const input = document.getElementById('input');
         let username = "user";
