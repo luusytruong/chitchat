@@ -1,5 +1,4 @@
 <?php
-// require __DIR__ . '/../../vendor/autoload.php'; dành cho server.php nằm trong mục php
 require __DIR__ . '/../vendor/autoload.php';
 
 use Ratchet\MessageComponentInterface;
@@ -15,24 +14,24 @@ class Chat implements MessageComponentInterface {
         $this->clients = new \SplObjectStorage;
     }
 
-    public function onOpen(ConnectionInterface $conn) {
-        $this->clients->attach($conn);
+    public function onOpen( ConnectionInterface $conn ) {
+        $this->clients->attach( $conn );
         echo "New connection! ({$conn->resourceId})\n";
     }
 
-    public function onMessage(ConnectionInterface $from, $msg) {
-        foreach ($this->clients as $client) {
-            $client->send($msg);
+    public function onMessage( ConnectionInterface $from, $msg ) {
+        foreach ( $this->clients as $client ) {
+            $client->send( $msg );
         }
-        echo $msg . "\n";
+        echo $msg . '\n';
     }
 
-    public function onClose(ConnectionInterface $conn) {
-        $this->clients->detach($conn);
+    public function onClose( ConnectionInterface $conn ) {
+        $this->clients->detach( $conn );
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 
-    public function onError(ConnectionInterface $conn, \Exception $e) {
+    public function onError( ConnectionInterface $conn, \Exception $e ) {
         echo "An error has occurred: {$e->getMessage()}\n";
         $conn->close();
     }
@@ -44,9 +43,9 @@ $server = IoServer::factory(
             new Chat()
         )
     ),
-    8081
+    8080
 );
 
-echo "Websocket runing in port 8080\n";
+echo 'Websocket running in port 8080\n';
 
 $server->run();

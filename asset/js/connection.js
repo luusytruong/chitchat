@@ -1,7 +1,5 @@
-// const conn = new WebSocket('ws://localhost:8080');
-const conn = new WebSocket('https://b227-42-118-101-199.ngrok-free.app');
+const conn = new WebSocket('ws://localhost:8080');
 const messages = document.getElementById('messages');
-const input = document.getElementById('input');
 
 conn.onopen = function () {
     console.log('Connected to the server'); // Debug message
