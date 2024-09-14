@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSocket Chat</title>
+    <link rel="stylesheet" href="./asset/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <div class="container-home">
+        <div class="navigation">
+            <div class="wrapper">
+                <div class="search-bar">
+                    <i class="fa-solid fa-bars"></i>
+                    <input type="text" name="search" id="search" placeholder="Search" />
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="tablist">
+                    <div class="online-users active">
+                        <div class="wrapper">Trực tuyến</div>
+                    </div>
+                    <div class="all-users">
+                        <div class="wrapper">Tất cả</div>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper-list">
+                <div class="users-list">
+                    <div class="user active">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="latest-msg">
+                                Bạn: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Perferendis excepturi eos et dolore obcaecati deleniti at? Quae
+                                voluptas iure commodi veniam nemo consectetur nostrum dolorem
+                                molestiae, maiores earum nulla ratione?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="wrapper">
+                <div class="title">
+                    <div class="user">
+                        <div class="user-img">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">Lưu Sỹ Trường</div>
+                            <div class="status">
+                                Đang hoạt động
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-chat">
+                    <img src="./view/img/chat.png" alt="" height="300">
+                    <!-- <div class="msg-list">
+                        Chọn một cuộc hội thoại để bắt đầu
+                    </div> -->
+                </div>
+                <div class="input-area">
+                    <i class="fa-solid fa-plus"></i>
+                    <div class="wrapper">
+                        <textarea name="input" id="input-area" placeholder="Aa"></textarea>
+                    </div>
+                    <div id="send-msg">
+                        <ion-icon name="send"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="asset/js/connection.js"></script>
+    <script type="module" src="asset/js/messageSent.js"></script>
+</body>
+
+</html>
