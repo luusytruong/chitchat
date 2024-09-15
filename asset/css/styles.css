@@ -44,21 +44,28 @@ input[type="password"]::-ms-clear {
     flex-basis: 1;
 
     .navigation {
-        padding: 10px;
+        padding: 10px 10px 20px 10px;
         /* background-color: #f0f9ff; */
         background-color: #ffffff;
         border-radius: 30px;
         box-shadow: 5px 5px 15px #00000012;
         max-width: 400px;
+        width: 100%;
         height: 100%;
-        /* display: none; */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
 
         .wrapper {
             padding: 10px;
+            height: fit-content;
         }
 
         .wrapper-list {
-            padding: 5px;
+            margin-top: 20px;
+            /* padding: 0px 5px 5px 5px; */
+            flex: 1;
+            overflow-y: scroll;
         }
 
         .wrapper,
@@ -69,7 +76,6 @@ input[type="password"]::-ms-clear {
             align-items: start;
             flex-direction: column;
             gap: 10px;
-            flex: 1;
 
             .search-bar {
                 width: 100%;
@@ -125,7 +131,7 @@ input[type="password"]::-ms-clear {
                 display: flex;
                 justify-content: start;
                 align-items: center;
-                height: 35px;
+                height: 40px;
                 width: 100%;
                 gap: 10px;
 
@@ -140,12 +146,12 @@ input[type="password"]::-ms-clear {
                 }
 
                 div:active {
-                    height: 35px;
+                    height: 40px;
                     background-color: transparent;
 
                     .wrapper {
                         background-color: #e7f1fd;
-                        scale: 0.96;
+                        scale: 0.95;
                         border-radius: 8;
                     }
                 }
@@ -154,7 +160,7 @@ input[type="password"]::-ms-clear {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    height: 35px;
+                    height: 40px;
                     border-radius: 20px;
 
                     .wrapper {
@@ -162,7 +168,7 @@ input[type="password"]::-ms-clear {
                         justify-content: center;
                         align-items: center;
                         padding: 6px 10px 6px 10px;
-                        height: 35px;
+                        height: 40px;
                         width: max-content;
                         cursor: pointer;
                         font-size: 14px;
@@ -180,14 +186,10 @@ input[type="password"]::-ms-clear {
             }
 
             .users-list {
-                height: 100%;
+                height: fit-content;
                 width: 100%;
-                margin-top: 20px;
-                display: flex;
-                align-items: start;
-                flex-direction: column;
-                gap: 10px;
-                overflow-y: auto;
+                display: grid;
+                gap: 6.5px;
 
                 .active {
                     background-color: #f0f9ff;
@@ -213,7 +215,7 @@ input[type="password"]::-ms-clear {
                         justify-content: center;
                         align-items: center;
                         flex-shrink: 0;
-                        background-color: #0165E1;
+                        background-color: #17A9FD;
                         color: #fff;
                         font-size: 45px;
                         border-radius: 50%;
@@ -288,33 +290,33 @@ input[type="password"]::-ms-clear {
                 justify-content: start;
                 align-items: start;
 
+                .user:hover{
+                    background-color: #f0f9ff;
+                }
                 .user {
                     height: 100%;
                     overflow: hidden;
                     display: flex;
                     justify-content: start;
                     align-items: center;
-                    /* padding: 8px; */
-                    /* box-shadow: 0 0 10px #000000; */
-                    /* border: 1px solid #00000012; */
+                    padding: 8px 12px 8px 8px;
                     background-color: transparent;
                     border-radius: 20px;
                     gap: 10px;
                     cursor: pointer;
 
                     .user-img {
-                        height: 45px;
-                        width: 45px;
+                        height: 40px;
+                        width: 40px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         flex-shrink: 0;
-                        background-color: #0165E1;
+                        background-color: #17A9FD;
                         color: #fff;
-                        font-size: 45px;
+                        font-size: 40px;
                         border-radius: 50%;
                         overflow: hidden;
-                        padding: 5px;
 
                         i {
                             transform: translateY(6px);
@@ -325,8 +327,8 @@ input[type="password"]::-ms-clear {
                         position: relative;
                         height: 45px;
                         display: flex;
-                        justify-content: start;
-                        align-items: start;
+                        justify-content: center;
+                        align-items: flex-start;
                         flex-direction: column;
 
                         .user-name {
@@ -362,10 +364,38 @@ input[type="password"]::-ms-clear {
                 border-radius: 20px;
 
                 .msg-list {
-                    padding: 6px 10px 6px 10px;
-                    background-color: #eee;
-                    border-radius: 20px;
-                    /* background-color: #0165E1; */
+                    height: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    flex-direction: column;
+                    gap: 10px;
+
+                    .msg {
+                        width: 100%;
+                        display: flex;
+                        /* justify-content: center; */
+                        align-items: center;
+                        
+                        .msg-content{
+                            max-width: 85%;
+                            background-color: #eee;
+                            border-radius: 20px;
+                            padding: 8px 12px 8px 12px;
+
+                        }
+                    }
+                    .sent{
+                        justify-content: flex-end;
+
+                        .msg-content{
+                            background-color: #17A9FD;
+                            color: #fff;
+                        }
+                    }
+                    .received{
+                        justify-content: flex-start;
+                    }
                 }
             }
 
@@ -378,17 +408,52 @@ input[type="password"]::-ms-clear {
                 /* padding: 10px; */
                 gap: 10px;
 
-                i {
-                    color: #17A9FD;
-                    font-size: 20px;
-                    background-color: #f0f9ff;
-                    height: 40px;
-                    width: 40px;
+                #option {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border-radius: 50%;
-                    flex-shrink: 0;
+                    gap: 10px;
+                    background-color: #f0f9ff;
+                    border-radius: 20px;
+
+                    i:hover {
+                        opacity: 0.5;
+                    }
+
+                    /* #button-show:hover {
+                        animation: rotate .3s ease-in-out forwards;
+                    } */
+                    #button-show.active{
+                        transform: rotate(45deg);
+                        transition: all .3s;
+                        background-color: #17A9FD;
+                        color: #f0f9ff;
+                    }
+                    i {
+                        color: #17A9FD;
+                        font-size: 20px;
+                        background-color: #f0f9ff;
+                        height: 40px;
+                        width: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        flex-shrink: 0;
+                        cursor: pointer;
+                        transition: all .2s;
+                    }
+
+                    #more.active{
+                        display: flex;
+                        transition: all .5s;
+                    }
+                    #more {
+                        display: none;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                    }
                 }
 
                 .wrapper {
@@ -397,7 +462,7 @@ input[type="password"]::-ms-clear {
                     box-shadow: unset;
                     background-color: #efefef;
                     border-radius: 20px;
-                    height: 40px;
+                    height: fit-content;
                     padding: 8px 8px 8px 12px;
                     display: flex;
                     justify-content: center;
@@ -412,6 +477,7 @@ input[type="password"]::-ms-clear {
                         vertical-align: middle;
                         font-size: 16px;
                         width: 100%;
+                        outline: unset;
                     }
                 }
 
@@ -432,6 +498,16 @@ input[type="password"]::-ms-clear {
             }
         }
     }
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(45deg);
+    }
+
 }
 
 #messages {
@@ -744,8 +820,7 @@ input[type="password"]::-ms-clear {
         .navigation {
             display: none;
         }
-        
-        .main {
-        }
+
+        .main {}
     }
 }
