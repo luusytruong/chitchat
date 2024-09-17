@@ -1,7 +1,8 @@
 <?php
 
 // include __DIR__ . '/controller/server.php';
-include __DIR__ . '/model/db.php';
+// include __DIR__ . '/model/db.php';
+
 // Xác định đường dẫn đến thư mục view
 $viewPath = __DIR__ . '/view/index.html';
 
