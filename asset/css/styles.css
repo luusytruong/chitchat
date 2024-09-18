@@ -212,24 +212,15 @@ input[type="password"]::-ms-clear {
 
                 /* background-color: #0099ff; */
 
-                .active {
-                    background-color: #0099ff22;
-                }
-
-                .active:hover {
-                    background-color: #0099ff22 !important;
-                    border-radius: unset !important;
-                    /* outline: #0099ff solid 2px; */
-                }
-
+                
                 .active:last-child {
                     border-radius: 0 0 10px 10px !important;
                 }
-
+                
                 .active:last-child:hover {
                     border-radius: 0 0 10px 10px !important;
                 }
-
+                
                 .dot {
                     position: absolute;
                     content: '';
@@ -238,10 +229,20 @@ input[type="password"]::-ms-clear {
                     right: 15px;
                     border-radius: 50%;
                 }
-
+                
                 .user:hover {
                     background-color: #eee;
                     border-radius: 10px;
+                }
+
+                .active {
+                    background-color: #0099ff22;
+                }
+
+                .active:hover {
+                    background-color: #0099ff22;
+                    border-radius: unset;
+                    /* outline: #0099ff solid 2px; */
                 }
 
                 .user {
@@ -891,6 +892,15 @@ input[type="password"]::-ms-clear {
 
                     .users-list{
                         padding: 0 10px;
+
+                        .active:hover{
+                            background-color: #eee;
+                            border-radius: 10px;
+                        }
+
+                        .active{
+                            background-color: transparent;
+                        }
                     }
                 }
             }

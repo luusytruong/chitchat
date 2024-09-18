@@ -51,17 +51,33 @@ function scrollLeft() {
     behavior: "smooth";
 }
 
-window.addEventListener("resize", scrollLeft);
+
 buttonBack.addEventListener("click", () => {
     scrollLeft();
 });
+
+window.addEventListener("resize", scrollLeft);
+window.addEventListener("resize", resizeWindow);
+
+let isIpad = false;
+
+function resizeWindow() {
+    isIpad = window.innerWidth <= 768;
+    console.log(isIpad);
+}
+
+resizeWindow();
 
 users.forEach((user, index) => {
     user.innerHTML += dot;
 
     user.addEventListener("click", function () {
-        if (user.classList.contains("active")) {
-            return;
+        if (!isIpad) {
+            // console.log("ngoai le");
+
+            if (user.classList.contains("active")) {
+                return;
+            }
         }
         const userActives = listUser.querySelectorAll(".active");
         userActives.forEach((userActive) => {
