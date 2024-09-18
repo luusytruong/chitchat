@@ -6,7 +6,7 @@ const buttonBack = document.getElementById("back");
 const tabList = document.querySelector(".tablist");
 const buttonTabs = tabList.querySelectorAll(".wrapper");
 const search = document.getElementById("search");
-const closeSearch = document.querySelector(".fa-xmark");
+const closeSearch = document.getElementById("close-search");
 
 search.addEventListener("click", (e) => {
     closeSearch.style.display = "flex";
@@ -14,11 +14,13 @@ search.addEventListener("click", (e) => {
 });
 
 closeSearch.addEventListener("click", (e) => {
+    search.value = '';
     closeSearch.style.display = "none";
     e.stopPropagation();
 });
 
 document.addEventListener("click", () => {
+    search.value = '';
     closeSearch.style.display = "none";
 });
 

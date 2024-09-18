@@ -6,7 +6,7 @@
     outline-color: #0099ff;
     font-family: Inter;
     -webkit-tap-highlight-color: transparent;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 
 ::selection {
@@ -690,7 +690,7 @@ input[type="password"]::-ms-clear {
     }
 
     .sidebar.active {
-        animation: slideLeft .5s forwards ease-out;
+        animation: slideLeft .5s forwards ease-in;
     }
 
     .sidebar.deactive {
@@ -1083,7 +1083,6 @@ input[type="password"]::-ms-clear {
     body {
         width: 100%;
         overflow-x: hidden;
-        scroll-behavior: smooth;
 
         .container-home {
             width: 200%;
