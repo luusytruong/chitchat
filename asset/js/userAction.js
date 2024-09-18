@@ -43,12 +43,10 @@ const dot = `<div class="dot"></div>`;
 
 function scrollRight() {
     body.scrollLeft += containerHome.offsetWidth;
-    behavior: "smooth";
 }
 
 function scrollLeft() {
     body.scrollLeft -= containerHome.offsetWidth;
-    behavior: "smooth";
 }
 
 
@@ -63,7 +61,7 @@ let isIpad = false;
 
 function resizeWindow() {
     isIpad = window.innerWidth <= 768;
-    console.log(isIpad);
+    // console.log(isIpad);
 }
 
 resizeWindow();

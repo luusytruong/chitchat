@@ -23,7 +23,7 @@
         <div class="navigation">
             <div class="wrapper">
                 <div class="search-bar">
-                    <i class="fa-solid fa-bars"></i>
+                    <i id="show-sidebar" class="fa-solid fa-bars"></i>
                     <input type="text" name="search" id="search" placeholder="Search" />
                     <i class="fa-solid fa-xmark"></i>
                 </div>
@@ -318,12 +318,52 @@
                 </div>
             </div>
         </div>
+        <div class="sidebar">
+            <div class="wrapper">
+                <i id="hide-sidebar" class="fa-solid fa-xmark"></i>
+                <div class="user-profile">
+                    <div class="user-img">
+                        <img src="./view/img/user.png" alt="user">
+                    </div>
+                    <div class="user-fullname">
+                        Lưu Sỹ Trường
+                    </div>
+                </div>
+                <div class="nav-link">
+                    <div class="nav-scroll">
+                        <div class="my-profile">
+                            <i class="fa-solid fa-user"></i>
+                            Tài khoản của tôi
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <div class="create-group">
+                            <i class="fa-solid fa-user-group"></i>
+                            Tạo nhóm chat mới
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <div class="night-mode">
+                            <i class="fa-solid fa-moon"></i>
+                            Chế độ ban đêm
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                        <gap></gap>
+                        <div class="log-out">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            Đăng xuất
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="shadow"></div>
     </div>
 
     <!-- <script type="module" src="asset/js/connection.js"></script>
     <script type="module" src="asset/js/messageSent.js"></script> -->
     <script src="asset/js/moreOptionChat.js"></script>
     <script src="asset/js/userAction.js"></script>
+    <script src="asset/js/sideBar.js"></script>
 </body>
 
 </html>
