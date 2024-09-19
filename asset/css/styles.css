@@ -22,13 +22,13 @@ html {
 
     .dark {
         background-color: #000;
-        background-color: #eef5fd;
     }
-
+    
     body {
         font-size: 16px;
         height: 100%;
         position: relative;
+        background-color: #eef5fd;
     }
 }
 
