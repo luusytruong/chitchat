@@ -6,7 +6,7 @@ const hideSideBar = document.getElementById('hide-sidebar')
 
 processSideBar()
 
-function processSideBar() {
+export function processSideBar() {
     if (window.innerWidth <= 768){
         sideBar.style.width = 'unset'
         sideBar.style.right = '100%'
@@ -17,7 +17,7 @@ function processSideBar() {
     }
 }
 
-window.addEventListener('resize', processSideBar)
+// window.addEventListener('resize', processSideBar)
 
 showSideBar.addEventListener('click', ()=>{
     sideBar.classList.remove('deactive');
@@ -29,6 +29,17 @@ showSideBar.addEventListener('click', ()=>{
 })
 
 hideSideBar.addEventListener('click', ()=>{
+    sideBar.classList.remove('active');
+    sideBar.classList.add('deactive');
+    
+    shadow.classList.remove('active');
+    shadow.classList.add('deactive');
+    setTimeout(() => {
+        shadow.style.display = 'none';
+    }, 500);
+})
+
+shadow.addEventListener('click', ()=>{
     sideBar.classList.remove('active');
     sideBar.classList.add('deactive');
     

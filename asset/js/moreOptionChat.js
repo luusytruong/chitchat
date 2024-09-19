@@ -10,7 +10,7 @@ buttonShow.addEventListener('click', function(){
 })
 
 
-const textArea = document.getElementById('input-area');
+const textArea = document.getElementById('input');
 
 textArea.addEventListener('click', function(){
     buttonShow.classList.remove('active');

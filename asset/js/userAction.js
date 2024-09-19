@@ -43,11 +43,11 @@ buttonTabs.forEach((buttonTab) => {
 
 const dot = `<div class="dot"></div>`;
 
-function scrollRight() {
+export function scrollRight() {
     body.scrollLeft += containerHome.offsetWidth;
 }
 
-function scrollLeft() {
+export function scrollLeft() {
     body.scrollLeft -= containerHome.offsetWidth;
 }
 
@@ -56,12 +56,12 @@ buttonBack.addEventListener("click", () => {
     scrollLeft();
 });
 
-window.addEventListener("resize", scrollLeft);
-window.addEventListener("resize", resizeWindow);
+// window.addEventListener("resize", scrollLeft);
+// window.addEventListener("resize", resizeWindow);
 
 let isIpad = false;
 
-function resizeWindow() {
+export function resizeWindow() {
     isIpad = window.innerWidth <= 768;
     // console.log(isIpad);
 }
