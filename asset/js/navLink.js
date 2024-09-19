@@ -22,6 +22,9 @@ const actions = [
         console.log('pw');
     },
     () => {
+        console.log('night');
+    },
+    () => {
         console.log('delete');
     },
     () => {

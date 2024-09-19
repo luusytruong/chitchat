@@ -23,7 +23,7 @@ html {
     .dark {
         background-color: #000;
     }
-    
+
     body {
         font-size: 16px;
         height: 100%;
@@ -382,7 +382,7 @@ input[type="password"]::-ms-clear {
                         /* border: #0099ff solid 3px; */
                         border-radius: 50%;
                         flex-shrink: 0;
-                        
+
                         img {
                             border-radius: 50%;
                             /* box-shadow: 0 0 10px #0099ff; */
@@ -426,7 +426,7 @@ input[type="password"]::-ms-clear {
                 }
             }
 
-            .body-chat::-webkit-scrollbar{
+            .body-chat::-webkit-scrollbar {
                 display: none;
             }
 
@@ -472,11 +472,11 @@ input[type="password"]::-ms-clear {
                         justify-content: flex-start;
                     }
 
-                    .msg:first-child{
+                    .msg:first-child {
                         margin-top: 20px;
                     }
-                    
-                    .msg:last-child{
+
+                    .msg:last-child {
                         margin-bottom: 20px;
                     }
                 }
@@ -599,7 +599,7 @@ input[type="password"]::-ms-clear {
         .wrapper {
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background-color: #f0f9ff;
             border-radius: 16px;
             /* box-shadow: 5px 5px 15px #00000012; */
             display: flex;
@@ -676,8 +676,8 @@ input[type="password"]::-ms-clear {
                         }
                     }
 
-                    .user-fullname:hover{
-                        background-color: #0099ff11;
+                    .user-fullname:hover {
+                        background-color: #ddf1ff;
                         cursor: copy;
                     }
 
@@ -688,7 +688,8 @@ input[type="password"]::-ms-clear {
                         border-radius: 16px;
                     }
                 }
-                .date-join{
+
+                .date-join {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
@@ -696,11 +697,13 @@ input[type="password"]::-ms-clear {
                     padding: 10px;
                     gap: 10px;
                     background-color: #0099ff11;
+                    background-color: #fff;
+                    box-shadow: 5px 5px 15px #00000012;
                     border-radius: 20px;
                     /* border: #0099ff solid 3px; */
                     cursor: pointer;
-                    
-                    .icon{
+
+                    .icon {
                         /* border: #0099ff solid 3px; */
                         display: flex;
                         justify-content: center;
@@ -711,13 +714,14 @@ input[type="password"]::-ms-clear {
                         background-color: #0099ff22;
                         border-radius: 15px;
 
-                        i{
+                        i {
                             font-size: 30px;
                             color: #0099ff;
                             text-shadow: #0099ff 0 0 6px;
                         }
                     }
-                    .content{
+
+                    .content {
                         height: 100%;
                         display: flex;
                         justify-content: center;
@@ -726,18 +730,20 @@ input[type="password"]::-ms-clear {
                         /* background-color: #d3e7ff;
                         padding: 0 10px;
                         border-radius: 10px; */
-                        
-                        .title{
+
+                        .title {
                             color: #0099ff;
                             font-weight: 600;
                         }
-                        .date-info{
+
+                        .date-info {
                             font-size: 14px;
                         }
                     }
                 }
+
                 .general,
-                .danger-zone{
+                .danger-zone {
                     display: flex;
                     width: 100%;
                     justify-content: center;
@@ -745,39 +751,41 @@ input[type="password"]::-ms-clear {
                     flex-direction: column;
                     gap: 10px;
 
-                    .title{
+                    .title {
                         width: 100%;
-                        display: inherit;
+                        display: none;
                         align-items: center;
                         gap: 10px;
                         padding-left: 10px;
                         font-weight: 500;
-                        
-                        i{
+
+                        i {
                             color: #0099ff;
                             font-size: 18px;
                         }
                     }
-                    
-                    .wrapper{
+
+                    .wrapper {
                         display: inherit;
                         background-color: #0099ff11;
+                        background-color: #fff;
+                        box-shadow: 5px 5px 15px #00000012;
                         width: 100%;
                         border-radius: 20px;
                         overflow: hidden;
 
-                        .styles:hover{
+                        .styles:hover {
                             background-color: #eee;
-    
-                            .link-icon{
-        
-                                i{
+
+                            .link-icon {
+
+                                i {
                                     color: #0099ff88;
                                 }
                             }
                         }
-    
-                        .styles{
+
+                        .styles {
                             width: 100%;
                             padding: 12px;
                             display: flex;
@@ -787,8 +795,8 @@ input[type="password"]::-ms-clear {
                             cursor: pointer;
                             font-weight: 500;
                             transition: all .3s;
-    
-                            i{
+
+                            i {
                                 color: #0099ff;
                                 font-size: 20px;
                                 width: 40px;
@@ -800,24 +808,121 @@ input[type="password"]::-ms-clear {
                                 align-items: center;
                                 flex-shrink: 0;
                             }
-    
-                            .link-icon{
+
+                            .link-icon {
                                 display: inherit;
                                 flex: 1;
                                 justify-content: flex-end;
-    
-                                i{
+
+                                i {
                                     background-color: unset;
                                     color: #0099ff34;
                                     transition: all .3s;
                                 }
                             }
                         }
-                        
+
+                        #night-mode {
+
+                            /* The switch - the box around the slider */
+                            .switch {
+                                position: relative;
+                                display: inline-block;
+                                width: 40px;
+                                height: 24px;
+                            }
+
+                            /* Hide default HTML checkbox */
+                            .switch input {
+                                opacity: 0;
+                                width: 0;
+                                height: 0;
+                            }
+
+                            /* The slider */
+                            .slider {
+                                position: absolute;
+                                cursor: pointer;
+                                top: 0;
+                                left: 0;
+                                right: 0;
+                                bottom: 0;
+                                background-color: #0099ff55;
+                                -webkit-transition: .3s;
+                                transition: .3s;
+                            }
+
+                            .slider:before {
+                                position: absolute;
+                                content: "";
+                                height: 16px;
+                                width: 16px;
+                                left: 4px;
+                                bottom: 4px;
+                                background-color: white;
+                                -webkit-transition: .3s;
+                                transition: .3s;
+                            }
+
+                            input:checked+.slider {
+                                background-color: #0099ff;
+                            }
+
+                            input:focus+.slider {
+                                box-shadow: 0 0 1px #0099ff;
+                            }
+
+                            input:checked+.slider:before {
+                                -webkit-transform: translateX(16px);
+                                -ms-transform: translateX(16px);
+                                transform: translateX(16px);
+                            }
+
+                            /* Rounded sliders */
+                            .slider.round {
+                                border-radius: 34px;
+                            }
+
+                            .slider.round:before {
+                                border-radius: 50%;
+                            }
+                        }
+
                     }
                 }
 
-                .dev-by{
+                .danger-zone {
+
+                    .wrapper {
+
+                        .styles:hover {
+
+                            .link-icon {
+
+                                i {
+                                    color: #ff003388;
+                                }
+                            }
+                        }
+
+                        .styles {
+
+                            i {
+                                background-color: #ff003322;
+                                color: #ff0033;
+                            }
+
+                            .link-icon {
+
+                                i {
+                                    color: #ff003334;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .dev-by {
                     display: inherit;
                     width: 100%;
                     gap: 5px;
@@ -826,7 +931,7 @@ input[type="password"]::-ms-clear {
                     flex-wrap: wrap;
                     font-size: 14px;
 
-                    .auther{
+                    .auther {
                         color: #0099ff;
                     }
                 }
@@ -956,7 +1061,7 @@ input[type="password"]::-ms-clear {
             padding: 30px;
             display: grid;
             place-items: center;
-            grid-template-columns: 1;
+            grid-template-columns: 1fr;
             gap: 25px;
             border-radius: 30px;
             box-shadow: 5px 5px 15px #00000012;
