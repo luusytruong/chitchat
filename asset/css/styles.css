@@ -603,14 +603,15 @@ input[type="password"]::-ms-clear {
     .sidebar {
         position: absolute;
         top: 10px;
-        left: -100%;
+        left: 10px;
         bottom: 10px;
         overflow: hidden;
         z-index: 1;
         /* background-color: #eef5fd; */
         /* padding: 10px; */
-        /* display: flex; */
+        /* display: none; */
         /* animation: slideRight .5s forwards ease-in-out; */
+        transform: translateX(-100%);
 
         .wrapper {
             width: 100%;
@@ -955,11 +956,11 @@ input[type="password"]::-ms-clear {
     }
 
     .sidebar.active {
-        animation: slideLeft .5s forwards ease-in;
+        animation: slideLeft .5s forwards ease;
     }
 
     .sidebar.deactive {
-        animation: slideRight .5s forwards ease-in;
+        animation: slideRight .5s forwards ease;
     }
 
     .shadow {
@@ -974,11 +975,11 @@ input[type="password"]::-ms-clear {
     }
 
     .shadow.active {
-        animation: inOpacity .5s forwards ease-out;
+        animation: inOpacity .5s forwards ease;
     }
 
     .shadow.deactive {
-        animation: deOpacity .5s forwards ease-in;
+        animation: deOpacity .5s forwards ease;
     }
 
 }
@@ -996,25 +997,21 @@ input[type="password"]::-ms-clear {
 
 @keyframes slideLeft {
     0% {
-        left: -100%;
-        right: 100%;
+        transform: translateX(-100%);
     }
 
     100% {
-        left: 10px;
-        right: 10px;
+        transform: translateX(0%);
     }
 }
 
 @keyframes slideRight {
     0% {
-        left: 10px;
-        right: 10px;
+        transform: translateX(0%);
     }
 
     100% {
-        left: -100%;
-        right: 100%;
+        transform: translateX(-100%);
     }
 }
 
