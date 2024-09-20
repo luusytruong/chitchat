@@ -1,17 +1,7 @@
-const conn = new WebSocket('ws://localhost:8080');
-const messages = document.getElementById('messages');
+const conn = new WebSocket('ws://localhost:8080'); //thay ipv4:port ở đây
 
 conn.onopen = function () {
     console.log('Connected to the server'); // Debug message
-};
-
-
-conn.onmessage = function (e) {
-    console.log('Message received: ' + e.data); // Debug message
-    const msg = document.createElement('div');
-    msg.textContent = e.data;
-    messages.appendChild(msg);
-    messages.scrollTop = messages.scrollHeight; // Auto scroll to the bottom
 };
 
 conn.onerror = function (error) {
