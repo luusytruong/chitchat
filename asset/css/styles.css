@@ -1,11 +1,11 @@
-:root{
+:root {
     --bgr-primary: #F6F5FF;
     --bgr-secondary: #EFEDFF;
     --bgr-secondary-1: #FFFFFF;
 
     --primary-color: #7363FF;
     --secondary-color: #A89FFF;
-    
+
     --input-color: #EFEFEF;
 
     --text-msg-color: #FFFFFF;
@@ -19,9 +19,10 @@
     --status-off: #999999;
 
     --toast-normal: #DDDDDD;
-    --toast-successful: #00BB00;
-    --toast-error: #FF0000;
+    --toast-successful: #75D00F;
+    --toast-error: #F33950;
 }
+
 * {
     line-height: 1.5;
     box-sizing: border-box;
@@ -38,12 +39,23 @@
     color: #fff;
 } */
 
-@keyframes toast{
-    0%{
+@keyframes toast {
+    0% {
         transform: translateX(calc(100% + 15px));
     }
-    100%{
+
+    100% {
         transform: translateX(calc(0%));
+    }
+}
+
+@keyframes cooldown {
+    0% {
+        transform: translateX(calc(0%));
+    }
+
+    100% {
+        transform: translateX(calc(-100%));
     }
 }
 
@@ -52,81 +64,103 @@ html {
     height: 100svh;
     width: 100%;
     overflow-y: auto;
-    
-    body {
-        font-size: 16px;
-        height: 100%;
-        position: relative;
-        background-color: #eef5fd;
-        background-color: var(--bgr-primary);
-        color: var(--text-color);
-        
-        .toast.successful{
-            animation: toast .5s ease-out forwards;
-            
-            .toast-icon{
-                background-color: var(--toast-successful);
-            }
-        }
-        
-        .toast.error{
-            animation: toast .5s ease-out forwards;
-            
-            .toast-icon{
-                background-color: var(--toast-error);
-            }
-        }
-        
-        .toast{
-            transform: translateX(calc(100% + 15px));
-            position: fixed;
-            height: 55px;
-            top: 10px;
-            right: 15px;
-            background-color: var(--bgr-secondary-1);
 
+}
+
+body {
+    font-size: 16px;
+    height: 100%;
+    position: relative;
+    background-color: #eef5fd;
+    background-color: var(--bgr-primary);
+    color: var(--text-color);
+
+    .toast.successful {
+        animation: toast .5s ease-out forwards;
+        background-color: var(--toast-successful);
+
+        .cooldown {
+            animation: cooldown 3s ease-out forwards;
+        }
+    }
+
+    .toast.error {
+        animation: toast .5s ease forwards;
+        background-color: var(--toast-error);
+
+        .cooldown {
+            animation: cooldown 3s ease-out forwards;
+        }
+
+    }
+
+    .toast {
+        transform: translateX(calc(100% + 15px));
+        position: fixed;
+        top: 10px;
+        right: 15px;
+        background-color: var(--toast-normal);
+
+
+        border-radius: 6px;
+        overflow: hidden;
+
+        .wrapper {
+            position: relative;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             gap: 10px;
 
-            border-radius: 6px;
-            overflow: hidden;
+            padding: 5px 20px 7px 10px;
 
-            .toast-icon{
+
+            .toast-icon {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 flex-shrink: 0;
-                background-color: var(--toast-normal);
-                padding: 10px;
 
-                i{
+                i {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     flex-shrink: 0;
                     height: 35px;
                     width: 35px;
-                    font-size: 30px;
-                    color: #fff;
+                    font-size: 20px;
+                    color: var(--text-msg-color);
                 }
             }
 
-            .toast-info{
+            .toast-info {
                 display: flex;
                 justify-content: flex-start;
                 align-items: flex-start;
                 flex-direction: column;
+                
                 height: 100%;
-                padding: 5px 0 0;
+                color: var(--text-msg-color);
 
-                .toast-title{
+                .toast-title {
                     font-weight: 500;
+                    font-size: 14px;
                 }
-                .toast-content{
+
+                .toast-content {
                     font-size: 12px;
+                    font-weight: 300;
                 }
+            }
+
+            .cooldown {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: var(--text-msg-color);
             }
         }
     }
@@ -261,7 +295,7 @@ input[type="password"]::-ms-clear {
                 div:active {
                     height: 35px;
                     background-color: transparent;
-                    
+
                     .wrapper {
                         background-color: var(--active-color);
                         scale: 0.95;
@@ -338,8 +372,8 @@ input[type="password"]::-ms-clear {
                 .user:hover {
                     background-color: var(--hover-color);
                     border-radius: 10px;
-                    
-                    .user-info{
+
+                    .user-info {
 
                         .status::before {
                             border: 2px solid var(--hover-color);
@@ -388,11 +422,12 @@ input[type="password"]::-ms-clear {
                         }
                     }
 
-                    .user-info.on{
-                        .status::before{
+                    .user-info.on {
+                        .status::before {
                             background-color: var(--status-on);
                         }
                     }
+
                     .user-info {
                         position: relative;
 
@@ -409,7 +444,7 @@ input[type="password"]::-ms-clear {
                             border: 2px solid var(--bgr-secondary-1);
                             transform: translateX(-23px);
                         }
-                        
+
                         .user-name {
                             font-weight: 600;
                         }
@@ -441,11 +476,11 @@ input[type="password"]::-ms-clear {
         border-radius: 16px;
         margin-left: 10px;
 
-        #ready-start.deactive{
+        #ready-start.deactive {
             display: none;
         }
 
-        #ready-start{
+        #ready-start {
             position: relative;
             display: flex;
             justify-content: center;
@@ -454,12 +489,12 @@ input[type="password"]::-ms-clear {
             flex: 1;
             gap: 20px;
 
-            img{
+            img {
                 max-width: 100%;
                 width: 230px;
             }
-            
-            p{
+
+            p {
                 border-radius: 20px;
                 padding: 8px 14px;
                 background-color: var(--primary-color);
@@ -467,7 +502,7 @@ input[type="password"]::-ms-clear {
             }
         }
 
-        .wrapper.active{
+        .wrapper.active {
             display: flex;
         }
 
@@ -510,7 +545,7 @@ input[type="password"]::-ms-clear {
                 .user:hover {
                     background-color: var(--hover-color);
 
-                    .user-info{
+                    .user-info {
 
                         .status::before {
                             border: 2px solid var(--hover-color);
@@ -556,8 +591,8 @@ input[type="password"]::-ms-clear {
                         }
                     }
 
-                    .user-info.on{
-                        .status::before{
+                    .user-info.on {
+                        .status::before {
                             background-color: var(--status-on);
                         }
                     }
@@ -624,13 +659,13 @@ input[type="password"]::-ms-clear {
                             color: var(--text-color);
                             border-radius: 20px;
                             padding: 8px 12px 8px 12px;
-                            
+
                         }
                     }
-                    
+
                     .sent {
                         justify-content: flex-end;
-                        
+
                         .msg-content {
                             background-color: var(--primary-color);
                             color: var(--text-msg-color);
@@ -1094,8 +1129,10 @@ input[type="password"]::-ms-clear {
 
                 .dev-by {
                     display: inherit;
+                    flex: 1;
                     width: 100%;
                     gap: 5px;
+                    align-items: flex-end;
                     justify-content: center;
                     padding: 20px 0;
                     flex-wrap: wrap;

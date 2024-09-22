@@ -1,19 +1,19 @@
 import conn from "./connection.js";
 import { autoHeightInput } from "./autoHeightInput.js";
 
-let username = localStorage.getItem('username');
+// let username = localStorage.getItem('username');
 
-if (username) {
-    console.log('Existing username!')
-} else {
-    username = prompt("what's your name?");
-    if (username) {
-        localStorage.setItem('username', username);
-        console.log("Enter username done!");
-    } else {
-        username = "user";
-    }
-}
+// if (username) {
+//     console.log('Existing username!')
+// } else {
+//     username = prompt("what's your name?");
+//     if (username) {
+//         localStorage.setItem('username', username);
+//         console.log("Enter username done!");
+//     } else {
+//         username = "user";
+//     }
+// }
 
 const input = document.getElementById('input');
 const msgList = document.getElementById('msg-list');
@@ -22,15 +22,15 @@ function isConnected() {
     return conn.readyState === WebSocket.OPEN;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (msgList) {
-        msgList.innerHTML = '';
-        console.log('clean');
-    } else {
-        msgList.createElement()
-        console.log('unclean');
-    }
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//     if (msgList) {
+//         msgList.innerHTML = '';
+//         console.log('clean');
+//     } else {
+//         msgList.createElement()
+//         console.log('unclean');
+//     }
+// })
 
 input.addEventListener('keypress', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) {

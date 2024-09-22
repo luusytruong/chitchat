@@ -30,6 +30,10 @@ function toastCreate(icon, info) {
             toastTitle.textContent = 'Mật khẩu quá ngắn';
             toastContent.textContent = 'vui lòng sử dụng mật khẩu mạnh hơn';
             break;
+        case 'i6':
+            toastTitle.textContent = 'Sai email hoặc mật khẩu';
+            toastContent.textContent = 'vui lòng thử nhập lại';
+            break;
         default:
             toastTitle.textContent = '6';
             toastContent.textContent = 'vui lòng nhập đủ thông tin';
@@ -56,8 +60,26 @@ export function toastStart(color, icon, info) {
         isCountingDown = false;
         toast.classList.remove('successful');
         toast.classList.remove('error');
-    }, 2000);
+    }, 3000);
     toastCreate(icon, info);
 }
 
-export default toast;
+export function beginToast(status, title, content) {
+    if (status === 'success') {
+        toast.classList.add('successful');
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+        toastTitle.textContent = title;
+        toastContent.textContent = content;
+    } else if (status === 'error') {
+        toast.classList.add('error');
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i>';
+        toastTitle.textContent = title;
+        toastContent.textContent = content;
+    }
+    setTimeout(() => {
+        toast.classList.remove('successful');
+        toast.classList.remove('error');
+    }, 3000);
+}
+
+// export default toast;

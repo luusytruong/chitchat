@@ -18,24 +18,26 @@
 
 <body>
     <div id="toast" class="toast">
-        <div class="toast-icon">
-            <i class="fa-solid fa-circle-question"></i>
-            <!-- <i class="fa-solid fa-circle-check"></i> -->
-            <!-- <i class="fa-solid fa-circle-exclamation"></i> -->
-        </div>
-        <div class="toast-info">
-            <div class="toast-title">
-                Đăng nhập thành công
+        <div class="wrapper">
+            <div class="toast-icon">
+                <i class="fa-solid fa-circle-question"></i>
+                <!-- <i class="fa-solid fa-circle-check"></i> -->
+                <!-- <i class="fa-solid fa-circle-exclamation"></i> -->
             </div>
-            <div class="toast-content">
-                Chuyển trang sau 3s!
+            <div class="toast-info">
+                <div class="toast-title">
+                    Đăng nhập thành công
+                </div>
+                <div class="toast-content">
+                    Chuyển trang sau 3s!
+                </div>
             </div>
+            <div class="cooldown"></div>
         </div>
-        <div class="cooldown"></div>
     </div>
     <div class="container-register">
         <div class="wrapper">
-            <form action="controller/regsiter.php" method="post">
+            <form id="form" action="controller/register.php" method="post">
                 <img src="./view/img/chat.png" alt="realtime chat logo">
                 <div class="box-input">
                     <label for="fullname">
@@ -63,14 +65,11 @@
                         <i class="fa-solid fa-lock"></i>
                         <input tabindex="3" id="password" name="password" type="password" placeholder="mật khẩu" required title="Nhập vào mật khẩu">
                         <i class="fa-solid fa-eye" tabindex="4"></i>
-                        <!-- <button id="action-password" type="button" name="button">
-                        </button> -->
                     </div>
                     <div>
                         <i class="fa-solid fa-lock"></i>
                         <input tabindex="5" id="repeat-password" name="repeat-password" type="password"
                             placeholder="nhập lại mật khẩu" required title="Nhập lại mật khẩu ở trên">
-                        <!-- <i class="fa-solid fa-eye"></i> -->
                     </div>
                 </div>
                 <button tabindex="6" type="submit">

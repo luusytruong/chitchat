@@ -10,10 +10,10 @@ export function processSideBar() {
     if (window.innerWidth <= 768){
         sideBar.style.width = 'unset'
         sideBar.style.right = '10px'
-        console.log('if');
+        // console.log('if');
     } else {
         sideBar.style.width = navigation.offsetWidth + 'px'
-        console.log('else');
+        // console.log('else');
     }
 }
 
