@@ -144,11 +144,10 @@ body {
 
                 .toast-title {
                     font-weight: 500;
-                    font-size: 14px;
                 }
 
                 .toast-content {
-                    font-size: 12px;
+                    font-size: 14px;
                     font-weight: 300;
                 }
             }
