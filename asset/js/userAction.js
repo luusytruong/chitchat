@@ -1,9 +1,7 @@
-import conn from "./connection.js";
-
 const body = document.body;
 const containerHome = document.querySelector(".container-home");
-const listUser = document.querySelector(".users-list");
-const users = listUser.querySelectorAll(".user");
+let listUser = document.querySelector(".users-list");
+let users = listUser.querySelectorAll(".user");
 const buttonBack = document.getElementById("back");
 const tabList = document.querySelector(".tablist");
 const buttonTabs = tabList.querySelectorAll(".wrapper");
@@ -73,23 +71,23 @@ export function resizeWindow() {
 
 resizeWindow();
 
-conn.onmessage = function (e) {
-    const data = JSON.parse(e.data);
+// conn.onmessage = function (e) {
+//     const data = JSON.parse(e.data);
 
-    if (data.type == 'init') {
-        const resourceId = data.resourceId;
-        console.log(resourceId);
-    }
-}
+//     if (data.type == 'init') {
+//         const resourceId = data.resourceId;
+//         console.log(resourceId);
+//     }
+// }
 
 users.forEach((user, index) => {
     user.innerHTML += dot;
 
-    function statusUser() {
-        
-    }
+    listUser = document.querySelector(".users-list");
+    users = listUser.querySelectorAll(".user");
 
     user.addEventListener("click", function () {
+
         const titleFullname = boxMsgs[index].querySelector('.user-name');
         const tabFullname = user.querySelector('.user-name');
 
@@ -99,16 +97,16 @@ users.forEach((user, index) => {
 
         if (!isIpad) {
             // console.log("ngoai le");
-            
+
             if (user.classList.contains("active")) {
                 return;
             }
         }
-        main.querySelectorAll('.active').forEach((currentActive) =>{
+        main.querySelectorAll('.active').forEach((currentActive) => {
             currentActive.classList.remove('active');
         })
         const userActives = listUser.querySelectorAll(".active");
-        userActives.forEach((userActive) => {            
+        userActives.forEach((userActive) => {
             userActive.classList.remove("active");
         });
         boxMsgs[index].classList.add('active');

@@ -68,6 +68,15 @@ input.addEventListener('keypress', function (e) {
 });
 
 conn.onmessage = function (e) {
+    const data = JSON.parse(e.data);
+    if (data.type === 'status') {
+        console.log('ok');
+        return;
+    } else {
+        console.log('0 ok');
+    }
+
+
     const msgSent = document.createElement('div');
     const msgContent = document.createElement('div');
 

@@ -1,3 +1,6 @@
+import { startFetch } from "./fetch.js";
+// import './toast.js';
+
 const changeAvatar = document.getElementById('change-avt');
 const changeFullname = document.getElementById('change-fullname');
 const changeEmail = document.getElementById('change-email');
@@ -29,7 +32,7 @@ const actions = [
     },
     () => {
         console.log('out');
-        window.location.href = 'login.html';
+        startFetch('controller/logout.php', '');
     }
 ]
 
