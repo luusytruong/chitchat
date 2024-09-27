@@ -6,6 +6,8 @@ use Ratchet\ConnectionInterface;
 require __DIR__ . '/../model/db.php';
 // require __DIR__ . '/../model/dbHost.php';
 
+include __DIR__ . '/model/hashId.php';
+
 class Chat implements MessageComponentInterface
 {
     protected $clients;
@@ -59,7 +61,7 @@ class Chat implements MessageComponentInterface
                 $status_stmt = $this->dbConnection->prepare($sql);
                 $status_stmt->bindParam(':user_id', $user_id);
                 if ($status_stmt->execute()) {
-                    $status_online = json_encode(['type' => 'status', 'user_id' => $user_id, 'is_online' => true]);
+                    $status_online = json_encode(['type' => 'status', 'user_id' => hashId($user_id), 'is_online' => true]);
                     foreach ($this->clients as $client) {
                         $client->send($status_online);
                     }
@@ -90,7 +92,7 @@ class Chat implements MessageComponentInterface
             $status_stmt = $this->dbConnection->prepare($sql);
             $status_stmt->bindParam(':user_id', $user_id);
             if ($status_stmt->execute()) {
-                $status_online = json_encode(['type' => 'status', 'user_id' => $user_id, 'is_online' => false]);
+                $status_online = json_encode(['type' => 'status', 'user_id' => hashId($user_id), 'is_online' => false]);
                 foreach ($this->clients as $client) {
                     $client->send($status_online);
                 }

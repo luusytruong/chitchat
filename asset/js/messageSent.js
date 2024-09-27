@@ -1,6 +1,6 @@
 import conn from "./connection.js";
 import { autoHeightInput } from "./autoHeightInput.js";
-import { beginToast} from "./toast.js";
+import { beginToast } from "./toast.js";
 import { currentConversation } from "./user.js";
 
 const input = document.getElementById('input');
@@ -49,11 +49,33 @@ input.addEventListener('keypress', function (e) {
 conn.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.type === 'status') {
+
         console.log(data);
+
+        const userId = data.user_id;
+        const account = document.getElementById(`${userId}`);
+
+        console.log(userId);
+        console.log(account);
+
+        if (account) {
+            const status = account.querySelector('.user-info');
+            if (data.is_online === true) {
+                status.classList.add('on')
+                console.log('true');
+            } else {
+                status.classList.remove('on')
+                console.log('false');
+            }
+        } else {
+            console.log('no account');
+        }
+
         return;
     } else {
         console.log('0 ok');
     }
+
 
 
     const msgSent = document.createElement('div');
@@ -68,4 +90,4 @@ conn.onmessage = function (e) {
     console.log('Message received: ' + e.data); // Debug message
 };
 
-export {input};
+export { input };

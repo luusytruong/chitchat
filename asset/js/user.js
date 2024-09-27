@@ -58,6 +58,8 @@ export function startUserAction() {
                 const titleFullname = boxMsgs.querySelector('.user-name');
                 const tabFullname = user.querySelector('.user-name');
                 titleFullname.textContent = tabFullname.textContent;
+                const status = user.querySelector('.user-info').className;
+                boxMsgs.querySelector('.user-info').classList = status;
             } else {
                 console.log('no message => return');
                 return;
