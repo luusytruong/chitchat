@@ -64,7 +64,7 @@ export function toastStart(color, icon, info) {
     toastCreate(icon, info);
 }
 
-export function beginToast(status, title, content, time) {
+export function beginToast(status, title, content) {
     if (status === 'success') {
         toast.classList.add('successful');
         toastIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';

@@ -11,7 +11,7 @@ $sql = "CREATE TABLE IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
-$conn->query( $sql );
+$pdo->exec( $sql );
 
 // Create table groups
 $sql = "CREATE TABLE IF NOT EXISTS groups (
@@ -20,7 +20,7 @@ $sql = "CREATE TABLE IF NOT EXISTS groups (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
-$conn->query( $sql );
+$pdo->exec( $sql );
 
 // Create table group_members
 $sql = "CREATE TABLE IF NOT EXISTS group_members (
@@ -32,7 +32,7 @@ $sql = "CREATE TABLE IF NOT EXISTS group_members (
     UNIQUE (group_id, user_id)
 )";
 
-$conn->query( $sql );
+$pdo->exec( $sql );
 
 // Create table messages
 $sql = "CREATE TABLE IF NOT EXISTS messages (
@@ -47,7 +47,7 @@ $sql = "CREATE TABLE IF NOT EXISTS messages (
     FOREIGN KEY (group_id) REFERENCES groups(id) ON DELETE CASCADE
 )";
 
-$conn->query( $sql );
+$pdo->exec( $sql );
 
 // Create table status
 $sql = "CREATE TABLE IF NOT EXISTS status (
@@ -58,10 +58,8 @@ $sql = "CREATE TABLE IF NOT EXISTS status (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 )";
 
-$conn->query( $sql );
+$pdo->exec( $sql );
 
-// Close connection
-$conn->close();
 echo 'All tables have been created.';
 
 ?>

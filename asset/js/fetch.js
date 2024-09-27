@@ -22,7 +22,7 @@ export function startFetch(path, data){
             if (data.redirect) {
                 setTimeout(() => {
                     window.location.href = data.redirect;
-                }, 4000);
+                }, 1500);
             }
             if (data.session_id) {
                 console.log(data.session_id);
@@ -36,6 +36,26 @@ export function startFetch(path, data){
     .catch(error => {
         console.error('error: ', error);
         beginToast('error', 'Đã xảy ra lỗi phía máy chủ', 'vui lòng thử lại sau ít phút');
+    });
+};
+
+export async function startFetchNo(path, data){
+    const params = new URLSearchParams(data);
+     return fetch(path, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params.toString()
+    })
+    .then(response => response.json())
+    .then(data => {
+        // console.log(data);
+        return data;
+    })
+    .catch(error => {
+        console.error('error: ', error);
+        throw error;
     });
 };
 
@@ -53,6 +73,7 @@ export async function startFetchAsync(path, data) {
         if (result.login === 'true') {
             isLogin = true;
         }
+        console.log(result);
         return result;
     } catch (error) {
         console.log('error: ', error);

@@ -1,3 +1,5 @@
+import { getCookie } from "./cookie.js";
+
 const conn = new WebSocket('ws://localhost:8080'); //thay ipv4:port ở đây
 
 conn.onopen = function () {
@@ -35,8 +37,10 @@ if (sessionId) {
 } else {
     console.log('Session ID not found in cookies.');
 }
-console.log(document.cookie.length);
-let cook = document.cookie;
-cook.replace('PHPSESSID=', '');
-cook.slice(10);
-console.log(cook.replace('PHPSESSID=', ''));
+
+const ssid = getCookie();
+if (ssid){
+    console.log('ssid', ssid);
+} else {
+    console.log('null ssid');
+}

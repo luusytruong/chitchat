@@ -1,36 +1,13 @@
 import conn from "./connection.js";
 import { autoHeightInput } from "./autoHeightInput.js";
-
-// let username = localStorage.getItem('username');
-
-// if (username) {
-//     console.log('Existing username!')
-// } else {
-//     username = prompt("what's your name?");
-//     if (username) {
-//         localStorage.setItem('username', username);
-//         console.log("Enter username done!");
-//     } else {
-//         username = "user";
-//     }
-// }
+import { beginToast} from "./toast.js";
+import { currentConversation } from "./user.js";
 
 const input = document.getElementById('input');
-const msgList = document.getElementById('msg-list');
 
 function isConnected() {
     return conn.readyState === WebSocket.OPEN;
 }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     if (msgList) {
-//         msgList.innerHTML = '';
-//         console.log('clean');
-//     } else {
-//         msgList.createElement()
-//         console.log('unclean');
-//     }
-// })
 
 input.addEventListener('keypress', function (e) {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -41,6 +18,7 @@ input.addEventListener('keypress', function (e) {
 
                 const msg = input.value.trim();
 
+
                 conn.send(msg);
 
                 const msgSent = document.createElement('div');
@@ -50,7 +28,7 @@ input.addEventListener('keypress', function (e) {
                 msgContent.className = 'msg-content';
                 msgContent.textContent = msg;
                 msgSent.appendChild(msgContent);
-                msgList.appendChild(msgSent);
+                currentConversation.appendChild(msgSent);
 
                 console.log('Sending message: ' + msg); // Debug message
                 input.value = '';
@@ -60,6 +38,7 @@ input.addEventListener('keypress', function (e) {
             }
         } else {
             console.log('Not connect to Server!');
+            beginToast('error', 'Mất kết nối', 'Vui lòng thử lại sau');
         }
     } else if (e.key === 'Enter' && e.shiftKey) {
         console.log('shift + enter');
@@ -70,7 +49,7 @@ input.addEventListener('keypress', function (e) {
 conn.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.type === 'status') {
-        console.log('ok');
+        console.log(data);
         return;
     } else {
         console.log('0 ok');
@@ -84,7 +63,9 @@ conn.onmessage = function (e) {
     msgContent.className = 'msg-content';
     msgContent.textContent = e.data;
     msgSent.appendChild(msgContent);
-    msgList.appendChild(msgSent);
+    currentConversation.appendChild(msgSent);
 
     console.log('Message received: ' + e.data); // Debug message
 };
+
+export {input};

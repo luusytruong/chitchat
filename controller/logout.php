@@ -20,7 +20,7 @@ if (isset($_SESSION['user_id']) || isset($_SESSION['email'])){
     echo json_encode(['status'=>'error', 'title'=>'Đăng xuất thất bại', 'content'=>'Có lỗi xảy ra, thử lại sau']);
     exit;
 } else {
-    echo json_encode(['status'=>'success', 'title'=>'Đăng xuất thành công', 'content'=>'Bạn sẽ được chuyển trang sau 3s', 'redirect'=>'login.html']);
+    echo json_encode(['status'=>'success', 'title'=>'Đăng xuất thành công', 'content'=>'Bạn sẽ được chuyển trang', 'redirect'=>'login.html']);
     exit;
 }
 

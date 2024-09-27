@@ -4,34 +4,22 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "realtime_chat_db";
+$dbname = "chitchat_db";
 
-// connect host
-$conn = mysqli_connect($servername, $username, $password);
+try {
+    $pdo = new PDO("mysql:host=$servername", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo"connected to host\n";
 
-// check connection host
-if (!$conn) {
-    die("Connection error: " . mysqli_connect_error());
+    $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+    $pdo->exec($sql);
+    echo"create db successful or db already\n";
+    
+    $pdo = new PDO("mysql:host=$servername; dbname=$dbname", $username, $password);
+    echo"connected to db\n";
+
+} catch (PDOException $e) {
+    echo $e->getMessage();
 }
-
-// create db if db does not exist
-$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if ( $conn->query( $sql ) === TRUE ) {
-    echo "Database $dbname has been created.\n";
-} else {
-    echo 'Error creating db: ' . $conn->error . "\n";
-}
-
-// connect db
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// check connection host
-if (!$conn) {
-    die("Connection error: " . mysqli_connect_error());
-}
-
-// select db
-$conn->select_db( $dbname );
-
 
 ?>

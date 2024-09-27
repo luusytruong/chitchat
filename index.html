@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./view/img/chat.png" type="image/x-icon">
     <title>ChitChat</title>
-    <script type="module" src="./asset/js/checkSession.js"></script>
     <link rel="stylesheet" href="./asset/css/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet" />
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="./asset/js/user.js"></script>
+    <!-- <script type="module" src="./asset/js/checkSession.js"></script> -->
 </head>
 
 <body>
@@ -28,16 +29,16 @@
             </div>
             <div class="toast-info">
                 <div class="toast-title">
-                    
+
                 </div>
                 <div class="toast-content">
-                    
+
                 </div>
             </div>
             <div class="cooldown"></div>
         </div>
     </div>
-    <div class="container-home" style="opacity: 0;">
+    <div class="container-home">
         <div class="navigation">
             <div class="wrapper">
                 <div class="search-bar">
@@ -55,9 +56,8 @@
                 </div>
             </div>
             <div class="wrapper-list">
-                <div class="users-list">
-                    <div class="user">
-                        <div class="dot"></div>
+                <div id="users-list" class="users-list">
+                    <!-- <div class="user">
                         <div class="user-img">
                             <img src="./view/img/user.png" alt="user">
                         </div>
@@ -71,7 +71,7 @@
                                 molestiae, maiores earum nulla ratione?
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -90,15 +90,15 @@
                         <div class="user-info">
                             <div class="user-name"></div>
                             <div id="status-text" class="status">
-                                
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <label for="input" class="body-chat">
-                    <div id="msg-list" class="msg-list">
+                    <!-- <div id="msg-list" class="msg-list">
                         
-                    </div>
+                    </div> -->
                 </label>
                 <div class="input-area">
                     <div id="option">
@@ -183,7 +183,7 @@
                                     <div class="switch">
                                         <input type="checkbox" id="night-checkbox">
                                         <span class="slider round"></span>
-                                      </div>
+                                    </div>
                                 </div>
                             </label>
                         </div>

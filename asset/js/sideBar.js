@@ -4,16 +4,19 @@ const shadow = document.querySelector('.shadow')
 const showSideBar = document.getElementById('show-sidebar')
 const hideSideBar = document.getElementById('hide-sidebar')
 
-processSideBar()
+processSideBar();
 
 export function processSideBar() {
     if (window.innerWidth <= 768){
         sideBar.style.width = 'unset'
         sideBar.style.right = '10px'
-        // console.log('if');
+        console.log('if');
     } else {
-        sideBar.style.width = navigation.offsetWidth + 'px'
-        // console.log('else');
+        setTimeout(() => {
+            sideBar.style.width = navigation.offsetWidth + 'px';
+            console.log(navigation.offsetWidth + 'px');
+        }, 100);
+        console.log('else');
     }
 }
 
