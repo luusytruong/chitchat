@@ -1,7 +1,7 @@
 import conn from "./connection.js";
 import { autoHeightInput } from "./autoHeightInput.js";
 import { beginToast } from "./toast.js";
-import { currentConversation } from "./user.js";
+import { currentConversation, receiverId } from "./user.js";
 
 const input = document.getElementById('input');
 
@@ -16,21 +16,30 @@ input.addEventListener('keypress', function (e) {
         if (isConnected()) {
             if (input.value !== '') {
 
-                const msg = input.value.trim();
+                const message = input.value.trim();
 
+                const data = {
+                    type: 'message',
+                    receiver_id: receiverId,
+                    group_id: null,
+                    msg: message
+                }
 
-                conn.send(msg);
+                const jsonData = JSON.stringify(data)
+
+                conn.send(jsonData);
+
 
                 const msgSent = document.createElement('div');
                 const msgContent = document.createElement('div');
 
                 msgSent.className = 'msg sent';
                 msgContent.className = 'msg-content';
-                msgContent.textContent = msg;
+                msgContent.textContent = message;
                 msgSent.appendChild(msgContent);
                 currentConversation.appendChild(msgSent);
 
-                console.log('Sending message: ' + msg); // Debug message
+                console.log('Sending message: ' + message); // Debug message
                 input.value = '';
                 autoHeightInput();
             } else {

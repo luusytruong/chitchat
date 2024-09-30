@@ -2,9 +2,10 @@
 
 // include __DIR__ . '/../../model/dbHost.php';
 include __DIR__ . '/../../model/db.php';
-include __DIR__ . '/hashId.php';
+include __DIR__ . '/message.php';
 
 $session_id = $_POST[ 'session_id' ];
+// $response = file_get_contents('http://pwm.io.vn/controller/getUserId.php?session_id=' . $session_id);
 $response = file_get_contents( 'http://localhost/chitchat/controller/getUserId.php?session_id=' . $session_id );
 $data = json_decode( $response, true );
 

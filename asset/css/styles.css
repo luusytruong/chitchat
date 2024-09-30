@@ -1612,18 +1612,14 @@ input[type="password"]::-ms-clear {
             .main {
                 max-width: 100%;
 
-                .wrapper {
+                .wrapper.active {
 
-                    .conversation {
-                        padding: 10px;
+                    .title {
 
-                        .title {
-
-                            #back {
-                                display: flex;
-                            }
-
+                        #back {
+                            display: flex;
                         }
+
                     }
                 }
             }

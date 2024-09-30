@@ -5,8 +5,7 @@ use Ratchet\ConnectionInterface;
 
 require __DIR__ . '/../model/db.php';
 // require __DIR__ . '/../model/dbHost.php';
-
-include __DIR__ . '/model/hashId.php';
+include __DIR__ . '/model/message.php';
 
 class Chat implements MessageComponentInterface
 {
@@ -26,13 +25,13 @@ class Chat implements MessageComponentInterface
         echo "New connection! ({$conn->resourceId})\n";
     }
 
-    public function onMessage(ConnectionInterface $from, $msg)
+    public function onMessage(ConnectionInterface $from, $data)
     {
-        $data = json_decode($msg, true);
+        $dataFromClient = json_decode($data, true);
 
         //check cookie from clients
-        if (isset($data['type']) && $data['type'] === 'init') {
-            $session_id = $data['session_id'];
+        if (isset($dataFromClient['type']) && $dataFromClient['type'] === 'init') {
+            $session_id = $dataFromClient['session_id'];
             echo "session_id: {$session_id}\n";
 
             // $Response = file_get_contents('http://pwm.io.vn/controller/getUserId.php?session_id=' . $session_id);
@@ -74,13 +73,25 @@ class Chat implements MessageComponentInterface
             }
             return;
         }
+        
+        $user_id = $this->clients[$from];
 
-        foreach ($this->clients as $client) {
-            if ($client !== $from) {
-                $client->send($msg);
-            }
-        }
-        echo $msg . "\n";
+        // echo "global user_id: " . $user_id . "\n";
+
+        saveMessage($this->dbConnection, $dataFromClient, $user_id);
+
+        // if (isset($data['type']) && $data['type'] === 'message') {
+        //     echo json_encode(['receiver_id'=>$data['receiver_id'], 'message'=>$data['msg']]) . "\n";
+        // } else {
+        //     echo 'else' . $data;
+        // }
+        
+        // foreach ($this->clients as $client) {
+        //     if ($client !== $from) {
+        //         $client->send($msg);
+        //     }
+        // }
+        // echo $msg . "\n";
     }
 
     public function onClose(ConnectionInterface $conn)

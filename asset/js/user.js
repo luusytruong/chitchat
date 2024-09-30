@@ -26,6 +26,7 @@ async function importUser() {
 importUser();
 
 let currentConversation;
+let receiverId
 
 export function startUserAction() {
     let listUser = document.querySelector(".users-list");
@@ -51,7 +52,7 @@ export function startUserAction() {
             } else {
                 console.log('trong phạm vi ipad');
             }
-
+            receiverId = user.id
             currentConversation = boxMsgs.querySelector(`.${user.id}`);
             if (currentConversation) {
                 console.log(currentConversation);
@@ -81,6 +82,7 @@ export function startUserAction() {
             scrollRight();
 
             input.focus();
+            console.log('id',receiverId);
         });
 
 
@@ -88,4 +90,4 @@ export function startUserAction() {
     console.log('loaded');
 }
 
-export {currentConversation};
+export {currentConversation, receiverId};
