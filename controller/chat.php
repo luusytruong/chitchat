@@ -6,22 +6,26 @@ use Ratchet\ConnectionInterface;
 require __DIR__ . '/../model/db.php';
 // require __DIR__ . '/../model/dbHost.php';
 include __DIR__ . '/model/saveMessages.php';
+include __DIR__ . '/model/addData.php';
 
 class Chat implements MessageComponentInterface
 {
-    protected $clients;
+    protected $clients = [];
     protected $dbConnection;
 
     public function __construct()
     {
-        $this->clients = new \SplObjectStorage;
+        // $this->clients = new \SplObjectStorage;
         global $pdo;
         $this->dbConnection = $pdo;
     }
 
     public function onOpen(ConnectionInterface $conn)
     {
-        $this->clients->attach($conn);
+        $this->clients[$conn->resourceId] = [
+            'connection' => $conn,
+            'user_id' => null // Hoặc giá trị mặc định khác nếu cần
+        ];
         echo "New connection! ({$conn->resourceId})\n";
     }
 
@@ -52,7 +56,8 @@ class Chat implements MessageComponentInterface
                 $user_id = $data['user_id'];
 
                 //save user_id
-                $this->clients[$from] = $user_id;
+                // $this->clients[$from] = $user_id;
+                $this->clients[$from->resourceId]['user_id'] = $user_id; // Lưu user_id
 
                 echo "user_id: " . ($user_id) . "\n";
 
@@ -62,7 +67,7 @@ class Chat implements MessageComponentInterface
                 if ($status_stmt->execute()) {
                     $status_online = json_encode(['type' => 'status', 'user_id' => hashId($user_id), 'is_online' => true]);
                     foreach ($this->clients as $client) {
-                        $client->send($status_online);
+                        $client['connection']->send($status_online);
                     }
                 } else {
                     echo 'failed set is_online = 1 user_id: ' . $user_id . "\n";
@@ -74,45 +79,49 @@ class Chat implements MessageComponentInterface
             return;
         }
         
-        $user_id = $this->clients[$from];
-
-        // echo "global user_id: " . $user_id . "\n";
+        // $user_id = $this->clients[$from];
+        $user_id = $this->clients[$from->resourceId]['user_id'];
 
         saveMessage($this->dbConnection, $dataFromClient, $user_id);
 
-        // if (isset($data['type']) && $data['type'] === 'message') {
-        //     echo json_encode(['receiver_id'=>$data['receiver_id'], 'message'=>$data['msg']]) . "\n";
-        // } else {
-        //     echo 'else' . $data;
-        // }
+        $receiver_id_hashed = $dataFromClient['receiver_id'];
+        // echo $receiver_id_hashed;
         
-        // foreach ($this->clients as $client) {
-        //     if ($client !== $from) {
-        //         $client->send($msg);
-        //     }
-        // }
-        // echo $msg . "\n";
+        $addData = addData(hashId($user_id), $dataFromClient);
+
+        foreach ($this->clients as $client) {
+            $client_user_id = $client['user_id'];
+
+            if (verifyId($client_user_id, $receiver_id_hashed)) {
+                $client['connection']->send($addData);
+            }
+        }
+        echo ($addData) . "\n";
     }
 
     public function onClose(ConnectionInterface $conn)
     {
         // Update status to offline
-        if (isset($this->clients[$conn])) {
-            $user_id = $this->clients[$conn];
+        if (isset($this->clients[$conn->resourceId])) {
+
+            // $user_id = $this->clients[$conn];
+            $user_id = $this->clients[$conn->resourceId]['user_id'];
+            
             $sql = 'UPDATE status SET is_online = 0 WHERE user_id = :user_id';
             $status_stmt = $this->dbConnection->prepare($sql);
             $status_stmt->bindParam(':user_id', $user_id);
             if ($status_stmt->execute()) {
                 $status_online = json_encode(['type' => 'status', 'user_id' => hashId($user_id), 'is_online' => false]);
                 foreach ($this->clients as $client) {
-                    $client->send($status_online);
+                    $client['connection']->send($status_online);
                 }
             } else {
                 echo 'failed to set is_online = 0 user_id: ' . $user_id . "\n";
             }
+
+            unset($this->clients[$conn->resourceId]);
         }
 
-        $this->clients->detach($conn);
         echo "Connection {$conn->resourceId} has disconnected\n";
     }
 

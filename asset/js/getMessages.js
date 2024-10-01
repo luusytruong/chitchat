@@ -130,4 +130,8 @@ async function getMessages() {
     });
 }
 
+// function displayMessages(result) {
+    
+// }
+
 export { getMessages }

@@ -87,16 +87,26 @@ conn.onmessage = function (e) {
 
 
 
-    const msgSent = document.createElement('div');
-    const msgContent = document.createElement('div');
-
-    msgSent.className = 'msg received';
-    msgContent.className = 'msg-content';
-    msgContent.textContent = e.data;
-    msgSent.appendChild(msgContent);
-    currentConversation.appendChild(msgSent);
+    displayMessages(data)
 
     console.log('Message received: ' + e.data); // Debug message
 };
 
 export { input };
+
+function displayMessages(data) {
+
+    //handling sender
+    const resultConverSation = document.querySelector(`.${data.sender_id}`)
+    if (resultConverSation) {
+        const msg = document.createElement('div')
+        msg.classList.add('msg', 'received')
+        const msgContent = document.createElement('div')
+        msgContent.classList.add('msg-content')
+        msgContent.textContent = data.message
+        msg.appendChild(msgContent)
+        resultConverSation.appendChild(msg)
+    } else {
+        console.log('khong ton tai ', data.sender_id);
+    }
+}
