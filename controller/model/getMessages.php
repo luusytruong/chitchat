@@ -21,8 +21,10 @@ $response = [];
 
 if ($stmt->execute()) {
     $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     foreach($data as $data){
+        if ((int)$user_id === (int)$data['sender_id']) {
+            //code
+        }
         $response[] = [
             'sender_id'=> hashId($data['sender_id']),
             'receiver_id'=> hashId($data['receiver_id']),
@@ -34,6 +36,7 @@ if ($stmt->execute()) {
     $response['error'] = 'failed to execute query';
 }
 
-echo json_encode($response);
+// echo json_encode($response);
+echo json_encode(['session'=>hashId($user_id), 'data'=>$response]);
 
 ?>

@@ -59,30 +59,30 @@ conn.onmessage = function (e) {
     const data = JSON.parse(e.data);
     if (data.type === 'status') {
 
-        console.log(data);
+        // console.log(data);
 
         const userId = data.user_id;
         const account = document.getElementById(`${userId}`);
 
-        console.log(userId);
-        console.log(account);
+        // console.log(userId);
+        // console.log(account);
 
         if (account) {
             const status = account.querySelector('.user-info');
             if (data.is_online === true) {
                 status.classList.add('on')
-                console.log('true');
+                // console.log('true');
             } else {
                 status.classList.remove('on')
-                console.log('false');
+                // console.log('false');
             }
         } else {
-            console.log('no account');
+            // console.log('no account');
         }
 
         return;
     } else {
-        console.log('0 ok');
+        // console.log('0 ok');
     }
 
 

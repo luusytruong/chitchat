@@ -27,13 +27,13 @@ if ( $stmt->execute() ) {
 
     foreach ( $data as $userData ) {
         $isOline = ((bool)$userData['is_online']) ? 'on' : '';
-        $userHtml[] = [
-            'user'=> "<div id='". hashId( $userData[ 'id' ] ) ."' class='user'><div class='user-img'><img src='./view/img/user.png' alt='user'></div><div class='user-info {$isOline}'><div class='status'></div><div class='user-name'>{$userData['fullname']}</div><div class='latest-msg'>Nhấp để gửi tin nhắn</div></div></div>",
-            'conversation'=> "<div class='". hashId( $userData[ 'id' ] ) ." msg-list'> </div>"
-        ];
         if ( ( int )$userData[ 'id' ] !== ( int )$currentUserId ) {
-
+            
             // concat html
+            $userHtml[] = [
+                'user'=> "<div id='". hashId( $userData[ 'id' ] ) ."' class='user'><div class='user-img'><img src='./view/img/user.png' alt='user'></div><div class='user-info {$isOline}'><div class='status'></div><div class='user-name'>{$userData['fullname']}</div><div class='latest-msg'>Nhấp để gửi tin nhắn</div></div></div>",
+                'conversation'=> "<div class='". hashId( $userData[ 'id' ] ) ." msg-list'> </div>"
+            ];
         }
     }
     // send json to client

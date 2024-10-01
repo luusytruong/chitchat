@@ -1,5 +1,6 @@
 import { getCookie } from "./cookie.js";
 import { startFetchNo } from "./fetch.js";
+import { getMessages } from "./getMessages.js";
 import { input } from "./messageSent.js";
 import { isIpad, scrollRight } from "./userAction.js";
 
@@ -10,7 +11,7 @@ async function importUser() {
     }
     const result = await startFetchNo('controller/model/user.php', data);
 
-    console.log(result);
+    // console.log(result);
 
     const usersList = document.getElementById('users-list');
     const bodyChat = document.querySelector('.body-chat');
@@ -19,6 +20,7 @@ async function importUser() {
         usersList.innerHTML += data.user;
         bodyChat.innerHTML += data.conversation;
     });
+    getMessages()
     startUserAction();
 }
 
@@ -41,27 +43,27 @@ export function startUserAction() {
         user.addEventListener("click", function () {
 
             if (!isIpad) {
-                console.log('ngoài phạm vi ipad');
+                // console.log('ngoài phạm vi ipad');
                 if (user.classList.contains("active")) {
-                    console.log('có active => return');
+                    // console.log('có active => return');
                     return;
                 } else {
-                    console.log('không có active => continue');
+                    // console.log('không có active => continue');
                 }
             } else {
-                console.log('trong phạm vi ipad');
+                // console.log('trong phạm vi ipad');
             }
             receiverId = user.id
             currentConversation = boxMsgs.querySelector(`.${user.id}`);
             if (currentConversation) {
-                console.log(currentConversation);
+                // console.log(currentConversation);
                 const titleFullname = boxMsgs.querySelector('.user-name');
                 const tabFullname = user.querySelector('.user-name');
                 titleFullname.textContent = tabFullname.textContent;
                 const status = user.querySelector('.user-info').className;
                 boxMsgs.querySelector('.user-info').classList = status;
             } else {
-                console.log('no message => return');
+                // console.log('no message => return');
                 return;
             }
 
