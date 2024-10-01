@@ -5,7 +5,7 @@ use Ratchet\ConnectionInterface;
 
 require __DIR__ . '/../model/db.php';
 // require __DIR__ . '/../model/dbHost.php';
-include __DIR__ . '/model/message.php';
+include __DIR__ . '/model/saveMessages.php';
 
 class Chat implements MessageComponentInterface
 {

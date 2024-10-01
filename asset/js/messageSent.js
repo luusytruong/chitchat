@@ -1,7 +1,7 @@
 import conn from "./connection.js";
 import { autoHeightInput } from "./autoHeightInput.js";
 import { beginToast } from "./toast.js";
-import { currentConversation, receiverId } from "./user.js";
+import { currentConversation, receiverId } from "./getUsers.js";
 
 const input = document.getElementById('input');
 

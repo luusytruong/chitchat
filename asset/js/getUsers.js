@@ -12,11 +12,10 @@ async function importUser() {
 
     console.log(result);
 
-    const dataResult = result[0];
     const usersList = document.getElementById('users-list');
     const bodyChat = document.querySelector('.body-chat');
 
-    dataResult.forEach(data => {
+    result.forEach(data => {
         usersList.innerHTML += data.user;
         bodyChat.innerHTML += data.conversation;
     });

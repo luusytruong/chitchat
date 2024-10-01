@@ -1,7 +1,7 @@
 <?php
 
 include __DIR__ . '/../../model/db.php';
-include __DIR__ . '/verifyId.php';
+include __DIR__ . '/idHandling.php';
 
 function saveMessage($pdo, $data, $user_id){
 
@@ -24,12 +24,12 @@ function saveMessage($pdo, $data, $user_id){
                     $stmt->bindParam(':group_id', $data['group_id']);
                     $stmt->bindParam(':message', $data['msg']);
 
-                    echo json_encode(['type'=>'success', 'sender_id'=> $user_id, 'receiver_id'=>$receiver_id, 'msg' => $data['msg']]) . "\n";
-                    
                     if ($stmt->execute()) {
-                        echo "message saved successfully!\n";
+                        echo json_encode(['type'=>'success', 'sender_id'=> $user_id, 'receiver_id'=>$receiver_id, 'msg' => $data['msg']]) . "\n";
+                        // echo "message saved successfully!\n";
                     } else {
-                        echo "failed to save message!\n";
+                        echo json_encode(['type'=>'failed', 'sender_id'=> $user_id, 'receiver_id'=>$receiver_id, 'msg' => $data['msg']]) . "\n";
+                        // echo "failed to save message!\n";
                     }
 
                 }
@@ -41,10 +41,6 @@ function saveMessage($pdo, $data, $user_id){
     } else {
         echo "invalid message type!\n";
     }
-}
-
-function getMessages() {
-    
 }
 
 ?>

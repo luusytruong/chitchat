@@ -1,4 +1,5 @@
 <?php
+
 // Kiểm tra xem session_id có được gửi qua POST hay GET
 $session_id = $_POST['session_id'] ?? $_GET['session_id'] ?? null;
 
@@ -11,7 +12,7 @@ if ($session_id) {
 
     if (isset($_SESSION['user_id'])) {
         $response['user_id'] = $_SESSION['user_id'];
-        // session_destroy(); // Hủy session sau khi lấy user_id
+        
     } else {
         $response['error'] = 'Session không hợp lệ hoặc không có user_id.';
     }
@@ -20,4 +21,5 @@ if ($session_id) {
 }
 
 echo json_encode($response);
+
 ?>
