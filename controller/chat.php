@@ -5,6 +5,7 @@ use Ratchet\ConnectionInterface;
 
 require __DIR__ . '/../model/db.php';
 // require __DIR__ . '/../model/dbHost.php';
+
 include __DIR__ . '/model/saveMessages.php';
 include __DIR__ . '/model/addData.php';
 
@@ -38,8 +39,8 @@ class Chat implements MessageComponentInterface
             $session_id = $dataFromClient['session_id'];
             echo "session_id: {$session_id}\n";
 
-            // $Response = file_get_contents('http://pwm.io.vn/controller/getUserId.php?session_id=' . $session_id);
-            $Response = file_get_contents('http://localhost/chitchat/controller/getUserId.php?session_id=' . $session_id);
+            $Response = file_get_contents('http://pwm.io.vn/controller/getUserId.php?session_id=' . $session_id);
+            // $Response = file_get_contents('http://localhost/chitchat/controller/getUserId.php?session_id=' . $session_id);
             //check response
             if ($Response === FALSE) {
                 echo "Failed to fetch user_id\n";

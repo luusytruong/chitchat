@@ -1,10 +1,16 @@
 <?php
 
+// host local info
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "chitchat_db";
+
 // host info
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "chitchat_db";
+$servername = "103.97.126.22";
+$username = "yrytecvg_chitchat";
+$password = "yrytecvg_chitchat";
+$dbname = "yrytecvg_chitchat";
 
 // connect host
 try {
